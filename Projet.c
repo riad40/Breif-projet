@@ -58,7 +58,7 @@
 
     system("cls");
 
-	printf("\n\n                                                # SYSTEME DE GESTION BANCAIRE #                                 \n");
+    printf("\n\n                                                # SYSTEME DE GESTION BANCAIRE #                                 \n");
     printf("\n\n                MENU\n\n\n");
     printf("[1] Introduire un compte bancaire\n\n[2] Introduire plusieurs comptes bancaires\n\n[3] Operations\n\n[4] Affichage\n\n[5] Fidelisation\n\n[6] Quitter l'application\n\n");
 
@@ -95,7 +95,7 @@
 
 	    system("cls");
 
-	    printf("saisir le nombre de comptes que vous voulez cree : \n");
+	printf("saisir le nombre de comptes que vous voulez cree : \n");
         scanf("%d",&n);
 
             for(i=1; i<=n; i++){
@@ -141,8 +141,7 @@
               scanf("%s", &utilisateur.CIN);
 	          printf("Tapez le montant que vous voulez deposer :\n");
               scanf("%d", &utilisateur.Montant);
-
-
+			   
               printf("l'operation a ete bien terminee\n");
 
             break;
