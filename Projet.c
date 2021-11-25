@@ -1,23 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
+#include <string.h>
+#include <stdbool.h>
 
-    typedef struct utilisateurs{
+       // declaration du strecture
 
-        char  Nom     [50];
-        char  Prenom  [50];
-        char  CIN     [50];
-        float Montant [50];
+     struct compte_bancaire{
 
-    }utilisateur;
+        char  Nom     [20];
+        char  Prenom  [20];
+        char  CIN     [10];
+        float Montant;
+
+    };
     
-    utilisateur T[500];
+  struct  compte_bancaire T[100];
+
+  int  x = 0;
 
      void exite(){   // cette fonction pour la possibilité de retour au menu principal après chaque opération
 
         int choix;
 
-        printf("[1] Retour au menu\n[2] Quitter l'application\n");
+        printf("1- Retour au menu\n2- Quitter l'application\n");
 
         printf("Tapez un choix : ");
         scanf("%d", &choix);
@@ -36,109 +41,165 @@
      
     void cree1(){  // cette foction pour introduire un compte bancaire
    	
-	    system("cls");
+	    system("clear");
 
             printf("Le nom : ");
-            scanf("%s", &T[50].Nom);
+            scanf("%s", T[x].Nom);
 
             printf("Le Prenom : ");
-            scanf("%s", &T[50].Prenom);
+            scanf("%s", T[x].Prenom);
 
             printf("Le CIN : ");
-            scanf("%s", &T[50].CIN);
+            scanf("%s", T[x].CIN);
 
             printf("Le Montant : ");
-            scanf("%d", &T[50].Montant);
+            scanf("%f", &T[x].Montant);
 
             printf("Felicitations votre compte a ete bien cree \n");
-
+            
             exite();
 	}
 	
 	void cree2(){   // cette foction pour introduire plusieurs comptes bancaires
 
-	    system("cls");
+	    system("clear");
         
         int n, i;
         
-        printf("saisir le nombre de comptes que vous voulez cree : \n");
+        printf("Tapez combien de comptes que vous voulez crée : \n");
         scanf("%d",&n);
 
             for(i=1; i<=n; i++){
 
             printf("Le nom : ");
-            scanf("%s", &T[i].Nom);
+            scanf("%s", T[i].Nom);
 
             printf("Le Prenom : ");
-            scanf("%s", &T[i].Prenom);
+            scanf("%s", T[i].Prenom);
 
             printf("Le CIN : ");
-            scanf("%s", &T[i].CIN);
+            scanf("%s", T[i].CIN);
 
             printf("Le Montant : ");
-            scanf("%d", &T[i].Montant);
+            scanf("%f", &T[i].Montant);
             
-	    printf("Felicitations votre compte a ete bien cree \n");
+	          printf("Felicitations votre compte a eté bien crée \n");
 
             }
-
              exite();
 	}
-	
+
 	void Operations(){  // cette foction pour faire les opértions bancaires
 
-	  system("cls");
+	  system("clear");
 
-      int choix;
+      int choix, i;
       float depot, retire; // depot : Montant deposé. retire : Montant retiré
+      bool r = false;
+      char cin[10];
+	  
+        printf("Tapez le cin : ");
+        scanf("%s", cin);
 
-	  printf("[1]Depot\n[2]Retrait\n");
+        for( i = 0; i < 20 ; i++){
 
-          printf("tapez une choix :\n");
+            if( strcmp(T[i].CIN,cin) == 0 ){
+
+                    r = true;
+
+                    break;
+       }
+    }
+    if ( r == true){
+
+           printf("1 - retrait \n2 - depot \n");
+
+          printf("entrez votre choix: ");
           scanf("%d", &choix);
 
-           switch(choix){
+            switch(choix){
 
-            case 1:
-
-              system("cls");
-       
-              printf("Tapez le CIN :\n");
-              scanf("%s", &T[50].CIN);
-	          printf("Tapez le montant que vous voulez deposer :\n");
-              scanf("%f", &depot);
-   
-              printf("l'operation a ete bien terminee\n");
-
+            case 1: 
+                    printf("tapez le montant que vous voulez retirer :\n");
+                    scanf("%f", &retire);
+                    T[i].Montant = T[i].Montant - retire;
+                    printf("l'opération a ete bien terminée\n");
+                    exite();
             break;
+
             case 2:
-
-	          system("cls");
-	          
-              printf("Tapez le CIN :\n");
-              scanf("%s", &T[50].CIN);
-	          printf("Tapez le montant que vous voulez retirer :\n");
-              scanf("%f", &retire);
-
-              printf("l'operation a ete bien terminee\n");
-
+                   printf("tapez le montant que vous voulez deposée :\n");
+                   scanf("%f", &depot); 
+                   T[i].Montant = T[i].Montant + depot;
+                   printf("l'opération a ete bien terminée\n");
+                   exite();                   
             break;
+            }
+    }
+        else{
 
-            default:
-            break;
+        printf("ce cin n'existe pas \n");
+        exite();
+    }
+}
+  void affichagea(){
+
+          system("clear");
+         
+          char cin[10];
+          int i;
+          bool r = false;
+
+        printf("Recherche par CIN\n");
+
+        printf("tapez le cin : ");
+        scanf("%s", cin);
+               
+            for( i = 0; i < 20; i++){
+
+              if( strcmp(T[i].CIN,cin) == 0){
+                      
+                      r = true;
+                      break;
         }
-            exite();
-	}
-	
+    }
+            if(r == true){
+            
+            printf("le nom : %s  | ", T[i].Nom);
+
+            printf("le prenom : %s  | ", T[i].Prenom);
+
+            printf("CIN : %s | ", T[i].CIN );
+
+            printf("Montant : %.2f  \n", T[i].Montant);
+    }
+            else{
+               printf("compte n'existe pas\n");
+    }
+         exite();
+}
+      
     int main(){
 
-    system("cls");
+    system("clear");
+   
     int option;
-	printf("\n\n                                                # SYSTEME DE GESTION BANCAIRE #                                 \n");
-    printf("\n\n                MENU\n\n\n");
-    printf("[1] Introduire un compte bancaire\n\n[2] Introduire plusieurs comptes bancaires\n\n[3] Operations\n\n[4] Affichage\n\n[5] Fidelisation\n\n[6] Quitter l'application\n\n");
 
-	printf("Tapez une option  : ");
+	printf("\n\n             # SYSTEME DE GESTION BANCAIRE #                 ");
+   
+        printf("\n\n                          MENU                   \n\n\n");
+    
+      printf("\t 1- Introduire un compte bancaire \n\n");
+
+      printf(" \t 2- Introduire plusieurs comptes bancaires  \n\n");
+
+      printf("\t 3- operations \n\n");
+
+      printf("\t 4- Affichage   \n\n");
+
+      printf("\t 5- Quitter l'application  \n\n");
+
+	printf("\t Tapez une option  : ");
 	scanf("%d", &option);
 
     switch(option){
@@ -153,19 +214,11 @@
             Operations();
         break;
         case 4:
-            system("cls");
-            printf("Affichage");
-            exite();
+            affichagea();
         break;
         case 5:
-            system("cls");
-            printf("Fidelisation");
-            exite();
+             system("clear");
         break;
-       
-        case 6:
-        break;
-        
         default:
             printf("votre choix est invalid");
             exite();
