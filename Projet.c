@@ -17,7 +17,7 @@
   struct  compte_bancaire T[100];
 
   int  x = 0;
-
+  
      void exite(){   // cette fonction pour la possibilité de retour au menu principal après chaque opération
 
         int choix;
@@ -72,16 +72,16 @@
             for(i=1; i<=n; i++){
 
             printf("Le nom : ");
-            scanf("%s", T[i].Nom);
+            scanf("%s", T[x].Nom);
 
             printf("Le Prenom : ");
-            scanf("%s", T[i].Prenom);
+            scanf("%s", T[x].Prenom);
 
             printf("Le CIN : ");
-            scanf("%s", T[i].CIN);
+            scanf("%s", T[x].CIN);
 
             printf("Le Montant : ");
-            scanf("%f", &T[i].Montant);
+            scanf("%f", &T[x].Montant);
             
 	          printf("Felicitations votre compte a eté bien crée \n");
 
@@ -101,7 +101,7 @@
         printf("Tapez le cin : ");
         scanf("%s", cin);
 
-        for( i = 0; i < 20 ; i++){
+        for( i = 0; i < 10 ; i++){
 
             if( strcmp(T[i].CIN,cin) == 0 ){
 
@@ -155,7 +155,7 @@
         printf("tapez le cin : ");
         scanf("%s", cin);
                
-            for( i = 0; i < 20; i++){
+            for( i = 0; i < 10; i++){
 
               if( strcmp(T[i].CIN,cin) == 0){
                       
@@ -175,7 +175,7 @@
     }
             else{
                printf("compte n'existe pas\n");
-    }
+              }
          exite();
 }
       
@@ -185,21 +185,21 @@
    
     int option;
 
-	printf("\n\n             # SYSTEME DE GESTION BANCAIRE #                 ");
+      printf("\n\n             # SYSTEME DE GESTION BANCAIRE #                 ");
    
-        printf("\n\n                          MENU                   \n\n\n");
+      printf("\n\n                          MENU                   \n\n\n");
     
-      printf("\t 1- Introduire un compte bancaire \n\n");
+      printf("\t \t \t1- Introduire un compte bancaire \n\n");
 
-      printf(" \t 2- Introduire plusieurs comptes bancaires  \n\n");
+      printf(" \t \t \t2- Introduire plusieurs comptes bancaires  \n\n");
 
-      printf("\t 3- operations \n\n");
+      printf("\t \t \t3- operations \n\n");
 
-      printf("\t 4- Affichage   \n\n");
+      printf("\t \t \t4- Affichage   \n\n");
 
-      printf("\t 5- Quitter l'application  \n\n");
+      printf("\t \t \t5- Quitter l'application  \n\n");
 
-	printf("\t Tapez une option  : ");
+	printf("\t \t \tTapez une option  : ");
 	scanf("%d", &option);
 
     switch(option){
@@ -220,7 +220,8 @@
              system("clear");
         break;
         default:
-            printf("votre choix est invalid");
+            system("clear");
+            printf("votre choix est invalid\n");
             exite();
         break;
     }
