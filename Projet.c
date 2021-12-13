@@ -54,10 +54,15 @@
 
             printf("Le Montant : ");
             scanf("%f", &T[x].Montant);
-
-            printf("Felicitations votre compte a ete bien cree \n");
             
+            if(T[x].Montant < 0){
+              printf("ce choix n'est pas valid");
+              exite();
+            }
+            else{
+            printf("Felicitations votre compte a ete bien cree \n");
             exite();
+            }
 	}
 	
 	void cree2(){   // cette foction pour introduire plusieurs comptes bancaires
@@ -83,11 +88,16 @@
             printf("Le Montant : ");
             scanf("%f", &T[x].Montant);
             
-	          printf("Felicitations votre compte a eté bien crée \n");
-
+            if(T[x].Montant < 0){
+              printf("ce choix n'est pas valid \n");
+              exite();
             }
-             exite();
+            else{
+            printf("Felicitations votre compte a ete bien cree \n");
+            exite();
+            }
 	}
+  }
 
 	void Operations(){  // cette foction pour faire les opértions bancaires
 
